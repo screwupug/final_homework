@@ -12,6 +12,7 @@ string[] ReadData(string line)
     return stringArray;
 }
 
+// Формируем новый массив исходя из условий задачи
 string[] StringSelector(string[] stringArray)
 {
     int count = 0;
