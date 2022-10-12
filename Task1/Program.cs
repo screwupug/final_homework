@@ -11,16 +11,46 @@ string[] ReadData(string line)
     string[] stringArray = inputLine.Split(',', StringSplitOptions.TrimEntries);
     return stringArray;
 }
+
+string[] StringSelector(string[] stringArray)
+{
+    int count = 0;
+    for (int i = 0; i < stringArray.Length; i++)
+    {
+        if (stringArray[i].Length <= 3)
+        {
+            count++;
+        }
+    }
+    string[] newArray = new string[count];
+    for (int i = 0, j = 0; i < stringArray.Length; i++)
+    {
+        if (stringArray[i].Length <= 3)
+        {
+            newArray[j] = stringArray[i];
+            j++;
+        }
+    }
+    return newArray;
+}
+
 // Выводим результат
 void PrintData(string[] stringArray)
 {
     Console.Write($"[<{stringArray[0]}>, ");
-    for(int i =1; i < stringArray.Length - 1; i++)
+    for (int i = 1; i < stringArray.Length - 1; i++)
     {
         Console.Write($"<{stringArray[i]}>, ");
     }
     Console.WriteLine($"<{stringArray[stringArray.Length - 1]}>]");
 }
 
+
 string[] stringArray = ReadData("Введите строки через запятую: ");
+Console.WriteLine();
+string[] newArray = StringSelector(stringArray);
+Console.WriteLine("Исходный массив:");
 PrintData(stringArray);
+Console.WriteLine();
+Console.WriteLine("Новый массив:");
+PrintData(newArray);
